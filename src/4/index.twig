@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block slides %}
+		<section>
+			{% include 'common/splash.twig' %}
+			{% set lecture_num = 4 %}
+			{% set lecture_title = 'Краткий обзор предыдущих тем' %}
+			{% include 'common/hello.twig' %}
+		</section>
+
+	{% include '4/sections/base-types.twig' %}
+	{% include '4/sections/interfaces.twig' %}
+	{% include '4/sections/functions.twig' %}
+	{% include '4/sections/literal-types.twig' %}
+	{% include '4/sections/union-types.twig' %}
+	{% include '4/sections/intersection-types.twig' %}
+	{% include '4/sections/classes.twig' %}
+	{% include '4/sections/enums.twig' %}
+	{% include '4/sections/generics.twig' %}
+	{% include '4/sections/type-guards-and-assertions.twig' %}
+	{% include '4/sections/utility-types.twig' %}
+{% endblock %}

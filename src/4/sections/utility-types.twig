@@ -1,0 +1,325 @@
+<section>
+	<section>
+		<h2>Utility Types</h2>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Partial&lt;Type\>
+
+					```ts
+					interface Todo {
+						title: string;
+						description: string;
+					}
+					type PartTodo = Partial&lt;Todo>;
+
+					// will be equivalent to:
+					interface IPartTodo {
+						title?: string;
+						description?: string;
+					}
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Readonly&lt;Type\>
+
+					```ts
+					interface Todo {
+						title: string;
+						description: string;
+					}
+					type RoTodo = Readonly&lt;Todo>;
+
+					// will be equivalent to:
+					interface IRoTodo {
+						readonly title: string;
+						readonly description: string;
+					}
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Record&lt;Keys, Type\>
+
+					```ts
+					interface Todo {
+						title: string;
+						description: string;
+					}
+					type TodoList = Record&lt;number, Todo>
+
+					// will be equivalent to:
+					interface ITodoList {
+						[index: number]: Todo;
+					}
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Pick&lt;Type, Keys\>
+
+					```ts
+					interface Todo {
+						id: number;
+						title: string;
+						description: string;
+					}
+					type TodoList = Pick&lt;Todo, "title" | "description">
+
+					// will be equivalent to:
+					interface ITodoList {
+						title: string;
+						description: string;
+					}
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Omit&lt;Type, Keys\>
+
+					```ts
+					interface Todo {
+						id: number;
+						title: string;
+						description: string;
+					}
+					type TodoList = Pick&lt;Todo, "title" | "description">
+
+					// will be equivalent to:
+					interface ITodoList {
+						id: number;
+					}
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Exclude&lt;Type, ExcludedUnion\>
+
+					```ts [1|1-2|3|3-4|5|5-6]
+					type T0 = Exclude&lt;"a" | "b" | "c", "a">;
+					//    ^ = type T0 = "b" | "c"
+					type T1 = Exclude&lt;"a" | "b" | "c", "a" | "b">;
+					//    ^ = type T1 = "c"
+					type T2 = Exclude&lt;string | number | (() => void), Function>;
+					//    ^ = type T2 = string | number
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Extract&lt;Type, Union\>
+
+					```ts [1|1-2|3|3-4]
+					type T0 = Extract&lt;"a" | "b" | "c", "a" | "f">;
+					//    ^ = type T0 = "a"
+					type T1 = Extract&lt;string | number | (() => void), Function>;
+					//    ^ = type T1 = () => void
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### NonNullable&lt;Type\>
+
+					```ts [1|1-2|3|3-4]
+					type T0 = NonNullable&lt;string | number | undefined>;
+					//    ^ = type T0 = string | number
+					type T1 = NonNullable&lt;string[] | null | undefined>;
+					//    ^ = type T1 = string[]
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Parameters&lt;Type\>
+
+					```ts [1|3-4|6-7|9-10|1,12-16|18-19|21-22|24-26|28-31]
+					declare function f1(arg: { a: number; b: string }): void;
+
+					type T0 = Parameters&lt;() => string>;
+					//    ^ = type T0 = []
+
+					type T1 = Parameters&lt;(s: string) => void>;
+					//    ^ = type T1 = [s: string]
+
+					type T2 = Parameters&lt;&lt;T>(arg: T) => T>;
+					//    ^ = type T2 = [arg: unknown]
+
+					type T3 = Parameters&lt;typeof f1>;
+					//    ^ = type T3 = [arg: {
+					//		a: number;
+					//		b: string;
+					// }]
+
+					type T4 = Parameters&lt;any>;
+					//    ^ = type T4 = unknown[]
+
+					type T5 = Parameters&lt;never>;
+					//    ^ = type T5 = never
+
+					type T6 = Parameters&lt;string>;
+					// Err: Type 'string' does not satisfy the constraint '(...args: any) => any'.
+					//    ^ = type T6 = never
+
+					type T7 = Parameters&lt;Function>;
+					// Err: Type 'Function' does not satisfy the constraint '(...args: any) => any'.
+					// Err: Type 'Function' provides no match for the signature '(...args: any): any'.
+					//    ^ = type T7 = never
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### ConstructorParameters&lt;Type\>
+
+					```ts [1-2|4-5|7-8|10-11|13-16]
+					type T0 = ConstructorParameters&lt;ErrorConstructor>;
+					//    ^ = type T0 = [message?: string]
+
+					type T1 = ConstructorParameters&lt;FunctionConstructor>;
+					//    ^ = type T1 = string[]
+
+					type T2 = ConstructorParameters&lt;RegExpConstructor>;
+					//    ^ = type T2 = [pattern: string | RegExp, flags?: string]
+
+					type T3 = ConstructorParameters&lt;any>;
+					//    ^ = type T3 = unknown[]
+
+					type T4 = ConstructorParameters&lt;Function>;
+					// Err: Type 'Function' does not satisfy the constraint 'new (...args: any) => any'.
+					// Err: Type 'Function' provides no match for the signature 'new (...args: any): any'.
+					//    ^ = type T4 = never
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### ReturnType&lt;Type\>
+
+					```ts
+					declare function f1(): { a: number; b: string };
+
+					type T0 = ReturnType&lt;() => string>;
+					//    ^ = type T0 = string
+					type T1 = ReturnType&lt;(s: string) => void>;
+					//    ^ = type T1 = void
+					type T2 = ReturnType&lt;&lt;T>() => T>;
+					//    ^ = type T2 = unknown
+					type T3 = ReturnType&lt;&lt;T extends U, U extends number[]>() => T>;
+					//    ^ = type T3 = number[]
+					type T4 = ReturnType&lt;typeof f1>;
+					//    ^ = type T4 = {
+							a: number;
+							b: string;
+					}
+					type T5 = ReturnType&lt;any>;
+					//    ^ = type T5 = any
+					type T6 = ReturnType&lt;never>;
+					//    ^ = type T6 = never
+					type T7 = ReturnType&lt;string>;
+					Type 'string' does not satisfy the constraint '(...args: any) => any'.
+					//    ^ = type T7 = any
+					type T8 = ReturnType&lt;Function>;
+					// Err: Type 'Function' does not satisfy the constraint '(...args: any) => any'.
+					// Err: Type 'Function' provides no match for the signature '(...args: any): any'.
+					//    ^ = type T8 = any
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### InstanceType&lt;Type\>
+
+					```ts
+					class C {
+						x = 0;
+						y = 0;
+					}
+
+					type T0 = InstanceType&lt;typeof C>;
+					//    ^ = type T0 = C
+					type T1 = InstanceType&lt;any>;
+					//    ^ = type T1 = any
+					type T2 = InstanceType&lt;never>;
+					//    ^ = type T2 = never
+					type T3 = InstanceType&lt;string>;
+					Type 'string' does not satisfy the constraint 'new (...args: any) => any'.
+					//    ^ = type T3 = any
+					type T4 = InstanceType&lt;Function>;
+					// Err: Type 'Function' does not satisfy the constraint 'new (...args: any) => any'.
+					// Err: Type 'Function' provides no match for the signature 'new (...args: any): any'.
+					//    ^ = type T4 = any
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Required&lt;Type\>
+
+					```ts
+					interface Props {
+						a?: number;
+						b?: string;
+					}
+
+					const obj: Props = { a: 5 };
+
+					const obj2: Required&lt;Props> = { a: 5 };
+					Property 'b' is missing in type '{ a: number; }' but required in type 'Required&lt;Props>'.
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### ThisParameterType&lt;Type\>
+
+					```ts
+					function toHex(this: Number) {
+						return this.toString(16);
+					}
+
+					function numberToString(n: ThisParameterType&lt;typeof toHex>) {
+						return toHex.apply(n);
+					}
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### ThisType&lt;Type\>
+
+					```ts
+					type ObjectDescriptor&lt;D, M> = {
+						data?: D;
+						methods?: M & ThisType&lt;D & M>; // Type of 'this' in methods is D & M
+					};
+
+					function makeObject&lt;D, M>(desc: ObjectDescriptor&lt;D, M>): D & M {
+						let data: object = desc.data || {};
+						let methods: object = desc.methods || {};
+						return { ...data, ...methods } as D & M;
+					}
+
+					let obj = makeObject({
+						data: { x: 0, y: 0 },
+						methods: {
+							moveBy(dx: number, dy: number) {
+								this.x += dx; // Strongly typed this
+								this.y += dy; // Strongly typed this
+							},
+						},
+					});
+
+					obj.x = 10;
+					obj.y = 20;
+					obj.moveBy(5, 5);
+					```
+				</textarea>
+	</section>
+</section>

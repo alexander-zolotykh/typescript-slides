@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block slides %}
+  {% include 'common/splash.twig' %}
+  {% set lecture_num = 2 %}
+  {% set lecture_title = 'Основы языка' %}
+  {% include 'common/hello.twig' %}
+
+  <section data-markdown>
+    <textarea data-template>
+      ## Основные типы данных
+    </textarea>
+  </section>
+
+  <section data-markdown>
+    <textarea data-template>
+      #### Основные типы данных
+      ### Number
+
+      ```js
+
+      ```
+    </textarea>
+  </section>
+{% endblock %}

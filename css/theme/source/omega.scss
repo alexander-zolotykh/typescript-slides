@@ -1,0 +1,33 @@
+.reveal {
+	background-color: #F3F7FB;
+
+	p img {
+    margin: 0;
+    vertical-align: inherit;
+  }
+
+	pre {
+		box-shadow: none;
+
+		code {
+			line-height: 1.4;
+			padding: 20px;
+		}
+	}
+
+	.slides {
+		text-align: left;
+	}
+
+	.img-symbol {
+		height: 1em;
+		vertical-align: sub;
+		display: inline-block;
+		position: relative;
+		top: -.1em
+	}
+
+	.unmark-list {
+		list-style: none;
+	}
+}

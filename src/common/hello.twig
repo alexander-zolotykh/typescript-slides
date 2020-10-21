@@ -1,0 +1,38 @@
+<section class="hello">
+	<h2>Лекция {{ lecture_num }}</h2>
+	<h3>{{ lecture_title }}</h3>
+	<br/>
+	<div class="author">
+		<div class="author__pic">
+			<img src="../../assets/avatar-circle.png" alt="">
+		</div>
+		<div class="author__info">
+			<p>Александр Золотых</p>
+			<p>
+				<small>
+					Руководитель веб-разработки в
+					<img src="../../assets/omega-black.svg" height="40px" alt=""/>
+				</small>
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hello {
+		text-align: left;
+	}
+	.author img {
+		margin: 0;
+	}
+	.author p:last-child {
+		margin-bottom: 0;
+	}
+	.author {
+		display: grid;
+		grid-template-columns: 200px 1fr;
+	}
+	.author__pic img {
+		max-width: 150px;
+	}
+</style>

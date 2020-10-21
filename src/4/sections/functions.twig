@@ -1,0 +1,44 @@
+<section>
+	<section>
+		<h2>Функции</h2>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Interfaces Extending Classes
+
+					```ts
+					function add(x: number, y: number): number {
+						return x + y;
+					}
+
+					let myAdd = function (x: number, y: number): number {
+						return x + y;
+					};
+
+					let myAdd: (x: number, y: number) => number = function (
+						x: number,
+						y: number
+					): number {
+						return x + y;
+					};
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Выведение типов
+
+					```ts
+					// The parameters 'x' and 'y' have the type number
+					let myAdd = function (x: number, y: number): number {
+						return x + y;
+					};
+
+					// myAdd has the full function type
+					let myAdd2: (baseValue: number, increment: number) => number = function (x, y) {
+						return x + y;
+					};
+					```
+				</textarea>
+	</section>
+</section>
