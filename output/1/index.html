@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/>
+
+	<title>TypeScript lectures for MarSU</title>
+
+	<link rel="stylesheet" href="../../dist/reset.css"/>
+	<link rel="stylesheet" href="../../dist/reveal.css"/>
+	<link rel="stylesheet" href="../../dist/theme/white.css" id="theme"/>
+	<link rel="stylesheet" href="../../dist/theme/omega.css"/>
+
+	<!-- Theme used for syntax highlighted code -->
+	<link
+		rel="stylesheet"
+		href="https://highlightjs.org/static/demo/styles/atom-one-light.css"
+		id="highlight-theme"
+	/>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		
+		<section data-background-color="#083061">
+	<img data-src="../../assets/typescript.jpg" alt=""/>
+</section>
+
+		
+		
+		<section class="hello">
+	<h2>Лекция 1</h2>
+	<h3>О курсе</h3>
+	<br/>
+	<div class="author">
+		<div class="author__pic">
+			<img src="../../assets/avatar-circle.png" alt="">
+		</div>
+		<div class="author__info">
+			<p>Александр Золотых</p>
+			<p>
+				<small>
+					Руководитель веб-разработки в
+					<img src="../../assets/omega-black.svg" height="40px" alt=""/>
+				</small>
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hello {
+		text-align: left;
+	}
+	.author img {
+		margin: 0;
+	}
+	.author p:last-child {
+		margin-bottom: 0;
+	}
+	.author {
+		display: grid;
+		grid-template-columns: 200px 1fr;
+	}
+	.author__pic img {
+		max-width: 150px;
+	}
+</style>
+
+	<section>
+		<h2>План курса</h2>
+		<p>🥚 основы TypeScript</p>
+		<p>🥋 углубленное понимание</p>
+	</section>
+	<section>
+		<h2>Цели курса</h2>
+		<p>🎓 понимание TypeScript</p>
+		<p>🧑🏼‍💻 умение применять в реальных задачах</p>
+	</section>
+	<section>
+		<h2>Преимущества языка</h2>
+		<p>💎 Статическая типизация</p>
+		<p>💪 Поддержка в IDE</p>
+		<p>🔷 Вывод типов</p>
+		<p>🛡 Strict Null Checks</p>
+		<p>
+			<img src="../../assets/lectures/1/turing.png" class="img-symbol" alt="">
+			Тьюринг-полнота</p>
+	</section>
+	<section>
+		<h2>Темы</h2>
+		<ul class="unmark-list">
+			<li>💡 Assertions</li>
+			<li>💡 Type Guards</li>
+			<li>💡 Generics</li>
+			<li>💡 Utility Types</li>
+			<li>💡 Union Types</li>
+			<li>💡 Basic Types</li>
+			<li>💡 Definitions</li>
+			<li>💡 Configuration</li>
+			<li>💡 …</li>
+		</ul>
+	</section>
+
+	</div>
+</div>
+
+<script src="../../dist/reveal.js"></script>
+<script src="../../plugin/notes/notes.js"></script>
+<script src="../../plugin/markdown/markdown.js"></script>
+<script src="../../plugin/highlight/highlight.js"></script>
+<script>
+	// More info about initialization & config:
+	// - https://revealjs.com/initialization/
+	// - https://revealjs.com/config/
+	Reveal.initialize({
+		hash: true,
+
+		// Learn about plugins: https://revealjs.com/plugins/
+		plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+	});
+</script>
+</body>
+</html>

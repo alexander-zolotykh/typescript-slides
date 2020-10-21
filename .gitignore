@@ -2,8 +2,6 @@
 *.iml
 *.iws
 *.eml
-out/
-output/
 .DS_Store
 .svn
 log/*.log

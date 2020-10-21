@@ -1,0 +1,44 @@
+<section>
+	<section>
+		<h2>Литеральные типы</h2>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### String literal type
+
+					```ts
+					type Easing = "ease-in" | "ease-out" | "ease-in-out";
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Number literal type
+
+					```ts
+					type Value = 1 | 2 | 3 | 4 | 5 | 6;
+					```
+				</textarea>
+	</section>
+	<section data-markdown>
+				<textarea data-template>
+					### Boolean Literal Types
+
+					```ts
+					interface ValidationSuccess {
+						isValid: true;
+						reason: null;
+					};
+
+					interface ValidationFailure {
+						isValid: false;
+						reason: string;
+					};
+
+					type ValidationResult =
+						| ValidationSuccess
+						| ValidationFailure;
+					```
+				</textarea>
+	</section>
+</section>
