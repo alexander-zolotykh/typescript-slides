@@ -248,7 +248,7 @@ gulp.task('templates', () => {
 		.pipe(gulpNunjucks.compile({}, {
 			env: new nunjucks.Environment(new nunjucks.FileSystemLoader(path.resolve(__dirname, 'src')))
 		}))
-		.pipe(gulp.dest('output'))
+		.pipe(gulp.dest('docs'))
 })
 
 gulp.task('default', gulp.series('templates', gulp.parallel('js', 'css', 'plugins'), 'test'))
@@ -284,7 +284,7 @@ gulp.task('serve', gulp.series('templates', () => {
 
     gulp.watch([
     	'examples/**/*.html',
-    	'output/**/*.html',
+    	'docs/**/*.html',
     	'test/**/*.html',
     	'*.html',
 			'**/*.md'
